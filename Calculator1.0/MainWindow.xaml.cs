@@ -54,150 +54,28 @@ namespace Calculator1._0
                 lastNumber = lastNumber / 100;
                 resultLabel.Content = lastNumber.ToString();
             }
-        }
+        }       
 
-        private void buttonDivide_Click(object sender, RoutedEventArgs e)
+        private void OperationButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void buttonMult_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonMinus_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonPlus_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonEqual_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void buttonSeven_Click(object sender, RoutedEventArgs e)
-        {
-            if(resultLabel.Content.ToString() == "0")
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
-                resultLabel.Content = "7";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}7";
-            }
-        }
 
-        private void buttonFour_Click(object sender, RoutedEventArgs e)
+            }
+        }       
+
+        private void NumberButton_Click(object sender, RoutedEventArgs e)
         {
+            // Get the value of the button
+            int selectedValue = int.Parse((sender as Button).Content.ToString());          
+
             if (resultLabel.Content.ToString() == "0")
             {
-                resultLabel.Content = "4";
+                resultLabel.Content = $"{selectedValue}";
             }
             else
             {
-                resultLabel.Content = $"{resultLabel.Content}4";
-            }
-        }
-
-        private void buttonOne_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "1";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}1";
-            }
-        }
-
-        private void buttonZero_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString().Length >= 1 && resultLabel.Content.ToString() != "0")
-            {
-                resultLabel.Content = $"{resultLabel.Content}0";
-            }
-            else
-            {
-                
-            }
-        }
-
-        private void buttonEight_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "8";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}8";
-            }
-        }
-
-        private void buttonFive_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "5";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}5";
-            }
-        }
-
-        private void buttonTwo_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "2";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}2";
-            }
-        }
-
-        private void buttonNine_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "9";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}9";
-            }
-        }
-
-        private void buttonSix_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "6";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}6";
-            }
-        }
-
-        private void buttonThree_Click(object sender, RoutedEventArgs e)
-        {
-            if (resultLabel.Content.ToString() == "0")
-            {
-                resultLabel.Content = "3";
-            }
-            else
-            {
-                resultLabel.Content = $"{resultLabel.Content}3";
+                resultLabel.Content = $"{resultLabel.Content}{selectedValue}";
             }
         }
 
@@ -207,7 +85,7 @@ namespace Calculator1._0
             {
                 resultLabel.Content = "0,";
             }
-            else if (resultLabel.Content.ToString().Contains(","))
+            else if (resultLabel.Content.ToString().Contains(",") || resultLabel.Content.ToString().Contains("E"))
             {
                 resultLabel.Content = resultLabel.Content;
             }
