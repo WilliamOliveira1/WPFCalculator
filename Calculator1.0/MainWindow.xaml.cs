@@ -20,9 +20,13 @@ namespace Calculator1._0
     /// </summary>
     public partial class MainWindow : Window
     {
+        double lastNumber, result;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            buttonAC.Click += buttonAC_Click;
         }
 
         private void buttonAC_Click(object sender, RoutedEventArgs e)
@@ -36,12 +40,20 @@ namespace Calculator1._0
 
         private void buttonNegative_Click(object sender, RoutedEventArgs e)
         {
-
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            {
+                lastNumber = lastNumber * -1;
+                resultLabel.Content = lastNumber.ToString();
+            }
         }
 
         private void buttonPercent_Click(object sender, RoutedEventArgs e)
         {
-
+            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            {
+                lastNumber = lastNumber / 100;
+                resultLabel.Content = lastNumber.ToString();
+            }
         }
 
         private void buttonDivide_Click(object sender, RoutedEventArgs e)
@@ -189,19 +201,19 @@ namespace Calculator1._0
             }
         }
 
-        private void buttonDot_Click(object sender, RoutedEventArgs e)
+        private void buttonComma_Click(object sender, RoutedEventArgs e)
         {
             if (resultLabel.Content.ToString() == "0")
             {
-                resultLabel.Content = "0.";
+                resultLabel.Content = "0,";
             }
-            else if (resultLabel.Content.ToString().Contains("."))
+            else if (resultLabel.Content.ToString().Contains(","))
             {
                 resultLabel.Content = resultLabel.Content;
             }
             else
             {
-                resultLabel.Content = $"{resultLabel.Content}.";
+                resultLabel.Content = $"{resultLabel.Content},";
             }
         }
     }

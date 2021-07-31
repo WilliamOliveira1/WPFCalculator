@@ -50,6 +50,6 @@
         <Button x:Name="buttonNine" Content="9" Grid.Row="2" Grid.Column="2"  Margin="5" Click="buttonNine_Click"/>
         <Button x:Name="buttonSix" Content="6" Grid.Row="3" Grid.Column="2"  Margin="5" Click="buttonSix_Click"/>
         <Button x:Name="buttonThree" Content="3" Grid.Row="4" Grid.Column="2"  Margin="5" Click="buttonThree_Click"/>
-        <Button x:Name="buttonDot" Content="." Grid.Row="5" Grid.Column="2"  Margin="5" Click="buttonDot_Click"/>
+        <Button x:Name="buttonComma" Content="," Grid.Row="5" Grid.Column="2"  Margin="5" Click="buttonComma_Click"/>
     </Grid>
 </Window>
