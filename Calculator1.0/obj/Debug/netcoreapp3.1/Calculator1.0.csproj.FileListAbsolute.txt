@@ -35,3 +35,4 @@ C:\Users\William\Desktop\Projetos\C#\WPFCaulculator\Calculator1.0\obj\Debug\netc
 C:\Users\William\Desktop\Projetos\C#\WPFCaulculator\Calculator1.0\obj\Debug\netcoreapp3.1\Calculator1.0.dll
 C:\Users\William\Desktop\Projetos\C#\WPFCaulculator\Calculator1.0\obj\Debug\netcoreapp3.1\Calculator1.0.pdb
 C:\Users\William\Desktop\Projetos\C#\WPFCaulculator\Calculator1.0\obj\Debug\netcoreapp3.1\Calculator1.0.genruntimeconfig.cache
+C:\Users\William\Desktop\Projetos\C#\WPFCaulculator\Calculator1.0\obj\Debug\netcoreapp3.1\Calculator1.0.csproj.AssemblyReference.cache

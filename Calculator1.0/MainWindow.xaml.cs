@@ -21,6 +21,7 @@ namespace Calculator1._0
     public partial class MainWindow : Window
     {
         double lastNumber, result;
+        SelectedOperator selectedOperator;
 
         public MainWindow()
         {
@@ -60,8 +61,17 @@ namespace Calculator1._0
         {
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
-
+                resultLabel.Content = "0";
             }
+
+            if (sender == buttonDivide)
+                selectedOperator = SelectedOperator.Division;
+            if (sender == buttonMinus)
+                selectedOperator = SelectedOperator.Subtraction;
+            if (sender == buttonMult)
+                selectedOperator = SelectedOperator.Multiplication;
+            if (sender == buttonPlus)
+                selectedOperator = SelectedOperator.Addition;
         }       
 
         private void NumberButton_Click(object sender, RoutedEventArgs e)
@@ -92,6 +102,64 @@ namespace Calculator1._0
             else
             {
                 resultLabel.Content = $"{resultLabel.Content},";
+            }
+        }
+
+        private void buttonEqual_Click(object sender, RoutedEventArgs e)
+        {
+            double newNumber;
+            SimpleMath simpleMath = new SimpleMath();
+
+            if (double.TryParse(resultLabel.Content.ToString(), out newNumber))
+            {
+                switch(selectedOperator)
+                {
+                    case SelectedOperator.Addition:
+                        result = simpleMath.Add(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Division:
+                        result = simpleMath.Div(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Multiplication:
+                        result = simpleMath.Mult(lastNumber, newNumber);
+                        break;
+                    case SelectedOperator.Subtraction:
+                        result = simpleMath.Sub(lastNumber, newNumber);
+                        break;
+                }
+
+                resultLabel.Content = result.ToString();
+            }
+        }
+
+        public enum SelectedOperator
+        {
+            Addition,
+            Subtraction,
+            Multiplication,
+            Division
+        }
+
+        public class SimpleMath
+        {
+            public double Add(double n1, double n2)
+            {
+                return n1 + n2;
+            }
+
+            public double Sub(double n1, double n2)
+            {
+                return n1 - n2;
+            }
+
+            public double Mult(double n1, double n2)
+            {
+                return n1 * n2;
+            }
+
+            public double Div(double n1, double n2)
+            {
+                return n1 / n2;
             }
         }
     }
