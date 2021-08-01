@@ -36,6 +36,8 @@ namespace Calculator1._0
                 (resultLabel.Content.ToString() == "0" && resultLabel.Content.ToString().Length >= 2))
             {
                 resultLabel.Content = "0";
+                result = 0;
+                lastNumber = 0;                
             }            
         }
 
@@ -50,10 +52,14 @@ namespace Calculator1._0
 
         private void buttonPercent_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            double tempNumber;
+
+            if (double.TryParse(resultLabel.Content.ToString(), out tempNumber))
             {
-                lastNumber = lastNumber / 100;
-                resultLabel.Content = lastNumber.ToString();
+                tempNumber = tempNumber / 100;
+                if (lastNumber != 0)
+                    tempNumber *= lastNumber;
+                resultLabel.Content = tempNumber.ToString();
             }
         }       
 
@@ -64,7 +70,7 @@ namespace Calculator1._0
                 resultLabel.Content = "0";
             }
 
-            if (sender == buttonDivide)
+            if (sender == buttonDivide)                
                 selectedOperator = SelectedOperator.Division;
             if (sender == buttonMinus)
                 selectedOperator = SelectedOperator.Subtraction;
@@ -118,7 +124,7 @@ namespace Calculator1._0
                         result = simpleMath.Add(lastNumber, newNumber);
                         break;
                     case SelectedOperator.Division:
-                        result = simpleMath.Div(lastNumber, newNumber);
+                            result = simpleMath.Div(lastNumber, newNumber);
                         break;
                     case SelectedOperator.Multiplication:
                         result = simpleMath.Mult(lastNumber, newNumber);
@@ -159,7 +165,11 @@ namespace Calculator1._0
 
             public double Div(double n1, double n2)
             {
-                return n1 / n2;
+                if (n2 == 0)
+                    MessageBox.Show("Division by 0 is not supported", "Calculator 1.0", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return 0;
+                
+                    return n1 / n2;
             }
         }
     }
