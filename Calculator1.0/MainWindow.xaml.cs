@@ -166,8 +166,10 @@ namespace Calculator1._0
             public double Div(double n1, double n2)
             {
                 if (n2 == 0)
+                {
                     MessageBox.Show("Division by 0 is not supported", "Calculator 1.0", MessageBoxButton.OK, MessageBoxImage.Error);
                     return 0;
+                }
                 
                     return n1 / n2;
             }
